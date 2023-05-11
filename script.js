@@ -63,9 +63,14 @@ trash.addEventListener("mouseup",()=>{
 /* ---- control Panel ---- */
 let colors = ["#fff","#ff00ff","#00ffff","#ffff00"]
 
-function clickedTool(tool){
+function clickedTool(tool, ...data){
+    console.log(tool)
     if(tool === "generate"){
-        generateMemo({color : colors[Math.floor((Math.random() * colors.length))]})
+        if(data){
+            generateMemo({color:colors[data[0]]})
+        }else{
+            generateMemo({color : colors[Math.floor((Math.random() * colors.length))]})
+        }
         getArea()
     }
 }
